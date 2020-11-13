@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Bean.io</title>
+		<style type="text/css">
+			body {
+				background: #111;
+				overflow: hidden;
+				margin: 0px;
+				user-select: none;
+				color: #fff;
+			}
+			h1 {
+				font-size: 10em;
+			}
+			h2 {
+				font-size: 3em;
+			}
+			p {
+				margin: 0px;
+			}
+			input[type="text"] {
+				user-select: text;
+				font-size: 25px;
+				padding: 5px 15px;
+				outline: none;
+				border: 2px solid #000;
+			}
+
+			.center {
+				position: absolute;
+				text-align: center;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			#gameCanvas {
+				position: absolute;
+				z-index: -1;
+			}
+			#title {
+				text-align: center;
+				text-shadow: 0px 0px 5px #f00;
+			}
+			#mainMenu {
+				display: none;
+			}
+			#loginMenu {
+				display: grid;
+			}
+			#timeDiv {
+				position: absolute;
+				background: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="gameCanvas"></canvas>
+		<div id="timeDiv">
+			<p id="fpsP"></p>
+			<p id="pingP"></p>
+		</div>
+		<h2 id="connecting" class="center">Connecting..</h2>
+		<div id="mainMenu">
+			<h1 id="title">Bean.io</h1>
+			<div id="loginMenu" class="center">
+				<input id="nicknameInput" type="text" maxlength="15" placeholder="Nickname" autocomplete="off" spellcheck="false" size=15>
+				<p>Press Enter to play</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="./game.js"></script>
+	</body>
+</html>
