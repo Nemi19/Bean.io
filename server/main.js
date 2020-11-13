@@ -9,7 +9,6 @@ const invertedMapSize = 1 / mapSize;
 const halfMapSize = mapSize * 0.5;
 
 let nameMessage = new Uint8Array([0x02]);
-const bodyData = new Uint8Array(7);
 
 const availableIDs = Array.from({ length: 65536 }, (v, i) => 65535 - i);
 
@@ -290,14 +289,7 @@ const update = () => {
 			message[0] = 0x04;
 			for (let j = 0; j < queryCount; j++) {
 				const body = queryArray[j];
-				bodyData[0] = body.type;
-				bodyData[1] = body.id >> 8;
-				bodyData[2] = body.id;
-				bodyData[3] = body.x >> 8;
-				bodyData[4] = body.x;
-				bodyData[5] = body.y >> 8;
-				bodyData[6] = body.y;
-				message.set(bodyData, 1 + (j * 7));
+				message.set([body.type, body.id >> 8, body.id, body.x >> 8, body.x, body.y >> 8, body.y], 1 + (j * 7));
 			}
 			player.ws.send(message, true, false);
 		}
@@ -308,14 +300,7 @@ const update = () => {
 	lobbyMessage[0] = 0x05;
 	for (let j = 0; j < queryCount; j++) {
 		const body = queryArray[j];
-		bodyData[0] = body.type;
-		bodyData[1] = body.id >> 8;
-		bodyData[2] = body.id;
-		bodyData[3] = body.x >> 8;
-		bodyData[4] = body.x;
-		bodyData[5] = body.y >> 8;
-		bodyData[6] = body.y;
-		lobbyMessage.set(bodyData, 1 + (j * 7));
+		lobbyMessage.set([body.type, body.id >> 8, body.id, body.x >> 8, body.x, body.y >> 8, body.y], 1 + (j * 7));
 	}
 	server.publish("lobby", lobbyMessage, true, false);
 };
