@@ -32,12 +32,12 @@ for (let i = 0; i < looseSize * looseSize; i++) {
 for (let i = 0; i < tightSize * tightSize; i++)
 	tightCells.push([]);
 
-const insertLooseCell = (body) => {
-	const xIndex = ~~((body.x * invertedMapSize) * looseSize);
-	const yIndex = ~~((body.y * invertedMapSize) * looseSize);
+const insertLooseCell = (entity) => {
+	const xIndex = ~~((entity.x * invertedMapSize) * looseSize);
+	const yIndex = ~~((entity.y * invertedMapSize) * looseSize);
 	const index = xIndex + yIndex * looseSize;
-	looseCells[index].entities.push(body);
-	body.cellIndex = index;
+	looseCells[index].entities.push(entity);
+	entity.cellIndex = index;
 };
 
 const assignLooseCells = () => {
